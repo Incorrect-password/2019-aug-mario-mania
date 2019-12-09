@@ -27,7 +27,7 @@ POST
               {"user":"3", "Position":"5"},
               {"user":"4", "Position":"12"}
               ]}
-
+              all inputted data should be the integer ID of the corresponding field.
 /trackrankings
 
 GET
