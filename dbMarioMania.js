@@ -6,10 +6,3 @@ var connection = mysql.createConnection({
     password: 'password',
     database: 'mario-mania',
 })
-
-connection.connect(function (err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-})
