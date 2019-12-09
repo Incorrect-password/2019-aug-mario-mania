@@ -1,17 +1,17 @@
 
-const addUser = require('Services/tableUser')
+const addUser = require('../Services/tableUser')
 
-const addUserValidation = require('Validation/addUserValidation')
+// const addUserValidation = require('Validation/addUserValidation')
 
 function addUserController(userData) {
-    if (addUserValidation(userData)) {
+    // if (addUserValidation(userData)) {
         addUser(userData)
-    } else {
-        // do something
-    }
+    // } else {
+    //     do something
+    // }
 }
 
-module.exports.addUserController = addUserController
+module.exports = addUserController
 
 
 
