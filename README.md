@@ -21,7 +21,7 @@ POST
 POST
 
     Record race results.
-    {"track":"Rainbow Road", 
+    {"track":"2", 
     "result":[{"user":"1", "Position":"1"},
               {"user":"2", "Position":"3"},
               {"user":"3", "Position":"5"},
