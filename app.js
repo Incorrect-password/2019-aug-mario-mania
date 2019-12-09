@@ -1,12 +1,18 @@
+
 const express = require('express');
+
+const bodyParser = require('body-parser');
+
+const routes = require('./Config/routes');
 
 const app = express();
 
-const port = 3000; // specify the place on your computer where you want to run it
+const port = 3000;
 
-app.get('/', function (request, response) {
-    response.send('hello world');
-})
+var jsonParser = bodyParser.json();
+
+//include the routes
+routes(app)
 
 app.listen(port, () => {
     console.log('server running')
