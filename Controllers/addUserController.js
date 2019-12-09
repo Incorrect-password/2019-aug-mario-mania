@@ -1,9 +1,11 @@
 
 const addUser = require('../Services/tableUser')
 
-// const addUserValidation = require('Validation/addUserValidation')
+const addUserValidation = require('../Validation/addUserValidation')
 
 function addUserController(userData) {
+    addUserValidation(userData)
+
     // if (addUserValidation(userData)) {
         addUser(userData)
     // } else {
