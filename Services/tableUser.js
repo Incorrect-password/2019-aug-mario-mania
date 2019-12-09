@@ -1,4 +1,4 @@
-var connection = require('./dbMarioMania')
+let connection = require('./dbMarioMania')
 
 function addUser(userData) {
     connection.query(

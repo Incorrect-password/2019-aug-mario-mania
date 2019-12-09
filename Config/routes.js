@@ -10,6 +10,12 @@ const routes = (app) => {
         addUserController(req.body)
         res.send('created user!');
     })
+
+    app.post('results', jsonParser, function (req, res) {
+       addRaceResultsController(req.body)
+        res.send('added results!');
+
+    })
 }
 
 module.exports = routes;
