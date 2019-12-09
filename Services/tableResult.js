@@ -6,7 +6,7 @@ function addResult(trackid, userid, position) {
         [trackid, userid, position],
         function (err, result) {
             if (err) throw err
-            console.log("results added")
+            console.log("results added for user " + userid)
         });
 }
 
