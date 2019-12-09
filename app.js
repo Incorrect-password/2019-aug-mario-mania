@@ -1,4 +1,4 @@
-require('addUser')
+const addUser = require('./addUser')
 
 const express = require('express');
 
@@ -15,17 +15,9 @@ app.get('/', function (request, response) {
 })
 
 app.post('/user', jsonParser, function(req, res) {
-
-    // write function for req.body to go into
-
     addUser(req.body)
-
-    // DBConnection(function (db) {
-    //     var collection = db.collection('Tasks');
-    //     collection.insertOne(req.body);
-    //     res.send('created task!');
-    // });
-});
+    res.send('created user!');
+})
 
 app.listen(port, () => {
     console.log('server running')
