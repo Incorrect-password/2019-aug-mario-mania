@@ -1,4 +1,4 @@
-const addUser = require('./addUser')
+const addUser = require('./tableUser')
 
 const express = require('express');
 
