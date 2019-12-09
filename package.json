@@ -1,0 +1,23 @@
+{
+  "name": "2019-aug-mario-mania",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayden-Academy/2019-aug-mario-mania.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayden-Academy/2019-aug-mario-mania/issues"
+  },
+  "homepage": "https://github.com/Mayden-Academy/2019-aug-mario-mania#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "save": "^2.4.0"
+  }
+}
