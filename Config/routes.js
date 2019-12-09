@@ -1,4 +1,8 @@
-const addUserController = require('Controllers/addUserController')
+const bodyParser = require('body-parser');
+
+var jsonParser = bodyParser.json();
+
+const addUserController = require('../Controllers/addUserController')
 
 const routes = (app) => {
     app.get('/', function (request, response) {
