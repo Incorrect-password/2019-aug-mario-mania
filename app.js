@@ -1,8 +1,9 @@
-const addUser = require('./tableUser')
 
 const express = require('express');
 
 const bodyParser = require('body-parser');
+
+const routes = require('./Config/routes');
 
 const app = express();
 
@@ -10,14 +11,8 @@ const port = 3000;
 
 var jsonParser = bodyParser.json();
 
-app.get('/', function (request, response) {
-    response.send('hello world');
-})
-
-app.post('/user', jsonParser, function(req, res) {
-    addUser(req.body)
-    res.send('created user!');
-})
+//include the routes
+routes(app)
 
 app.listen(port, () => {
     console.log('server running')
