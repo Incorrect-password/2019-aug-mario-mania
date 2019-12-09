@@ -1,13 +1,13 @@
 let connection = require('./dbMarioMania')
 
-function addUser(userData) {
+function addResult(trackid, userid, position) {
     connection.query(
-        'INSERT INTO `user` (`name`, `cohort`, `favRacer`) VALUES (?, ?, ?)',
-        [userData.name, userData.cohort, userData.favRacer],
+        'INSERT INTO `result` (`trackid`, `userid`, `position`) VALUES (?, ?, ?)',
+        [trackid, userid, position],
         function (err, result) {
-            if (err) throw err;
-            console.log("user added");
+            if (err) throw err
+            console.log("results added")
         });
 }
 
-module.exports = addUser
+module.exports = addResult
