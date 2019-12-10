@@ -1,15 +1,9 @@
-
 const express = require('express')
-
-
 const routes = require('./Config/routes')
-
-const app = express()
-
+const app = express();
 const port = 3000
 
 
-//include the routes
 routes(app)
 
 app.listen(port, () => {
