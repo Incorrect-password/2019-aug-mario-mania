@@ -1,4 +1,4 @@
-var connection = require('./dbMarioMania')
+let connection = require('./dbMarioMania')
 
 function getFavRacers(callback) {
     connection.query(

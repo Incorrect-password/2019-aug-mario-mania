@@ -8,7 +8,6 @@ const routes = (app) => {
 
     app.post('/user', jsonParser, function(req, res) {
         addUserController(req.body, res)
-        // res.send('created user!');
     })
 }
 

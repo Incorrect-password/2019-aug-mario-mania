@@ -1,6 +1,6 @@
-var connection = require('./dbMarioMania')
+let connection = require('./dbMarioMania')
 
-async function getCohort(callback) {
+function getCohort(callback) {
     connection.query(
         'SELECT `id` FROM `cohort`',
         function (err, cohorts) {

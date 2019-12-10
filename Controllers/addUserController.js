@@ -1,4 +1,3 @@
-
 const addUser = require('../Services/tableUser')
 
 const addUserValidation = require('../Validation/addUserValidation')
@@ -12,10 +11,6 @@ function addUserController(userData, res) {
             res.send('failed to add user')
         }
     })
-
 }
 
 module.exports = addUserController
-
-
-
