@@ -1,14 +1,13 @@
 var connection = require('./dbMarioMania')
 
-async function getCohort() {
-    let cohorts = await connection.query(
+function getCohort(callback) {
+    connection.query(
         'SELECT `id` FROM `cohort`',
-        function (err, result) {
+        function (err, cohorts) {
             if (err) throw err
             console.log("cohorts retrieved")
-            callback(err, result)
+            callback(err, cohorts)
         })
-    return cohorts
 }
 
 module.exports = getCohort
