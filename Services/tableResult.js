@@ -10,7 +10,7 @@ function addResult(trackid, userid, position) {
         });
 }
 
-function getResults(trackid){
+function getRaceResults(trackid){
     let results = connection.query(
     'SELECT `id`,`userid`,`position` FROM `result` WHERE `trackid` = (?)',
         [trackid],
@@ -23,4 +23,4 @@ function getResults(trackid){
         })
 }
 
-module.exports = addResult, getResults
+module.exports = addResult, getRaceResults

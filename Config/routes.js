@@ -16,8 +16,9 @@ const routes = (app) => {
         res.send('added results!')
     })
 
-    app.get('trackrankings', jsonParser,function (req,res) {
-        getTrackRankingsController()
+    app.get('/trackrankings', jsonParser,function (req, res) {
+        getTrackRankingsController(req.query.trackid,res)
+        res.send('hello')
     })
 }
 

@@ -1,9 +1,11 @@
-const addUser = require('../Services/tableResult')
+const getRaceResults = require('../Services/tableResult')
 
-function getTrackRankingsController(userData, res) {
+function getTrackRankingsController(trackid, res) {
     //get results data by track
     //calculate mode for each user
     // display in order
+    // res.send('hello')
+    console.log(getRaceResults(trackid))
 }
 
 module.exports = getTrackRankingsController
