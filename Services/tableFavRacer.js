@@ -1,5 +1,10 @@
 var connection = require('./dbMarioMania')
 
+/**
+ * gets the ids of favRacers from db
+ *
+ * @param callback
+ */
 function getFavRacers(callback) {
     connection.query(
         'SELECT `id` FROM `favRacer`',

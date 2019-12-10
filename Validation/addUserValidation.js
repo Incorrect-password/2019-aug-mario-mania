@@ -2,11 +2,13 @@ let getCohort = require('../Services/tableCohort')
 let getFavRacer = require('../Services/tableFavRacer')
 
 
-
+/**
+ * checks the userData matches criteria and that the ids given exist in db
+ *
+ * @param userData
+ * @param cb returns result
+ */
 function addUserValidation(userData, cb) {
-    //check existence of name, cohort and favRacer
-    //check that name is no longer than 20 char
-    //check that cohort and favRacer are IDs and that they exist in their tables
 
      getCohort(function (err, cohorts) {
         getFavRacer(function (err, favRacers) {
