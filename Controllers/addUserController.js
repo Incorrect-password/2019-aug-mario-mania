@@ -12,6 +12,3 @@ function addUserController(userData) {
 }
 
 module.exports = addUserController
-
-
-
