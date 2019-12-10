@@ -17,19 +17,6 @@ function addResult(trackid, userid, position) {
         });
 }
 
-function getTrackids(callback, res) {
-    connection.query(
-        'SELECT `id` FROM `result`',
-        function (err, trackids) {
-            if(err) {
-                res.send('Cannot validate Track')
-            }else {
-                callback(err,trackids)
-            }
-        }
-    )
-}
-
 module.exports = addResult, getTrackids
 
 
