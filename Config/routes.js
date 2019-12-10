@@ -7,8 +7,7 @@ const addUserController = require('../Controllers/addUserController')
 const routes = (app) => {
 
     app.post('/user', jsonParser, function(req, res) {
-        addUserController(req.body)
-        res.send('created user!');
+        addUserController(req.body, res)
     })
 }
 
