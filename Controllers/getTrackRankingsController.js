@@ -1,11 +1,14 @@
-const getRaceResults = require('../Services/tableResult')
+const getRaceResults = require('../Services/tableResult').getRaceResults
+
+// const getRaceValidation = require('../Validation/getRaceValidation')
 
 function getTrackRankingsController(trackid, res) {
-    //get results data by track
-    //calculate mode for each user
-    // display in order
-    // res.send('hello')
-    console.log(getRaceResults(trackid))
+
+    // incorporate validation
+
+    getRaceResults(trackid, function(raceResults) {
+        res.send({"success": true, "data": raceResults})
+    })
 }
 
 module.exports = getTrackRankingsController

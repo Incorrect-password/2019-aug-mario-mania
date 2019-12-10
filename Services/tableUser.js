@@ -11,9 +11,9 @@ function addUser(userData, res) {
         [userData.name, userData.cohort, userData.favRacer],
         function (err, result) {
             if (err) {
-                res.send('username taken')
+                res.send({"success": false, "data": ['username taken']})
             } else {
-                res.send('user created!')
+                res.send({"success": true, "data": ['user created!']})
             }
         })
 }

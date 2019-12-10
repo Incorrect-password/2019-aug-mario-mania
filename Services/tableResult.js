@@ -10,17 +10,15 @@ function addResult(trackid, userid, position) {
         });
 }
 
-function getRaceResults(trackid){
-    let results = connection.query(
-    'SELECT `id`,`userid`,`position` FROM `result` WHERE `trackid` = (?)',
+function getRaceResults(trackid, callback){
+    connection.query(
+    'SELECT `userid`, `position` FROM `result` WHERE `trackid` = ? ORDER BY `position`',
         [trackid],
-        function (err, res) {
-            if (err) {
-                res.send('Unable to retrieve results')
-            } else {
-                return results
-            }
+        function (err, raceResults) {
+            if (err) throw err
+            callback(raceResults)
         })
 }
 
-module.exports = addResult, getRaceResults
+module.exports.addResult = addResult
+module.exports.getRaceResults = getRaceResults
