@@ -8,7 +8,7 @@ const addRaceResultsController = require('../Controllers/addRaceResultsControlle
 const routes = (app) => {
 
     app.post('/user', jsonParser, function(req, res) {
-<<<<<<< HEAD
+
         addUserController(req.body)
         res.send('created user!')
     })
@@ -21,10 +21,3 @@ const routes = (app) => {
 }
 
 module.exports = routes
-=======
-        addUserController(req.body, res)
-    })
-}
-
-module.exports = routes;
->>>>>>> origin
