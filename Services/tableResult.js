@@ -4,10 +4,23 @@ function addResult(trackid, userid, position) {
     connection.query(
         'INSERT INTO `result` (`trackid`, `userid`, `position`) VALUES (?, ?, ?)',
         [trackid, userid, position],
-        function (err, result) {
+        function (err) {
             if (err) throw err
             console.log("results added for user " + userid)
         });
 }
 
-module.exports = addResult
+function getResults(trackid){
+    let results = connection.query(
+    'SELECT `id`,`userid`,`position` FROM `result` WHERE `trackid` = (?)',
+        [trackid],
+        function (err, res) {
+            if (err) {
+                res.send('Unable to retrieve results')
+            } else {
+                return results
+            }
+        })
+}
+
+module.exports = addResult, getResults

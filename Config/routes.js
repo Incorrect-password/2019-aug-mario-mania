@@ -14,8 +14,8 @@ const routes = (app) => {
     app.post('/results', jsonParser, function (req, res) {
         addRaceResultsController(req.body)
         res.send('added results!')
-
     })
+
     app.get('trackrankings', jsonParser,function (req,res) {
         getTrackRankingsController()
     })
