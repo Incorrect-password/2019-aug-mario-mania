@@ -1,12 +1,12 @@
 
-const express = require('express');
+const express = require('express')
 
 
-const routes = require('./Config/routes');
+const routes = require('./Config/routes')
 
-const app = express();
+const app = express()
 
-const port = 3000;
+const port = 3000
 
 
 //include the routes
