@@ -12,7 +12,7 @@ POST
 
     Create new user.
     {"name":"Xx_Bowser_xX", "cohort":"2", "favRacer":"5"}
-        name is limited to 20 chars,
+        name is limited to 20 chars and must be unique,
         cohort must be an integer ID for available cohorts,
         favRacer must be an integer ID for available racers,.
 
