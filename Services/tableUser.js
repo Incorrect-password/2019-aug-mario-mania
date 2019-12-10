@@ -24,7 +24,7 @@ function addUser(userData, res) {
  * @param callback
  * @param res
  */
-function getuserids(callback, res) {
+function getUserids(callback, res) {
     connection.query(
         'SELECT `id` FROM `result`',
         function (err, userids) {
@@ -38,5 +38,7 @@ function getuserids(callback, res) {
 }
 
 
-module.exports = addUser, getuserids
+module.exports.addUser = addUser
+module.exports.getUserids = getUserids
+
 

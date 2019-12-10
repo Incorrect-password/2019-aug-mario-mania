@@ -17,6 +17,6 @@ function addResult(trackid, userid, position) {
         });
 }
 
-module.exports = addResult, getTrackids
+module.exports = addResult
 
 
