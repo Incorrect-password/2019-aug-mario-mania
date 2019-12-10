@@ -14,6 +14,3 @@ function addUserController(userData, res) {
 }
 
 module.exports = addUserController
-
-
-
