@@ -1,11 +1,10 @@
 const addResult = require('../Services/tableResult')
 
-function addRaceRusultController(userData) {
+function addRaceResultController(userData) {
     let trackid = userData.track
     userData.result.forEach(function(value) {
         addResult(trackid, value.user, value.position)
-
     })
 }
 
-module.exports = addRaceRusultController
+module.exports = addRaceResultController
