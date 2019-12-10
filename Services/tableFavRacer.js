@@ -5,8 +5,7 @@ function getFavRacers(callback) {
         'SELECT `id` FROM `favRacer`',
         function (err, favRacers) {
             if (err) throw err
-            console.log("favRacers retrieved")
-            callback(err, favRacers)
+            return callback(err, favRacers)
         })
 }
 

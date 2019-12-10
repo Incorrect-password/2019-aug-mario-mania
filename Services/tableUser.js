@@ -10,7 +10,7 @@ function addUser(userData, res) {
             } else {
                 res.send('user created!')
             }
-        });
+        })
 }
 
 module.exports = addUser

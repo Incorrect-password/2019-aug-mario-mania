@@ -3,25 +3,23 @@ let getFavRacer = require('../Services/tableFavRacer')
 
 
 
-async function addUserValidation(userData) {
-    //change input JSON to object
+function addUserValidation(userData, cb) {
     //check existence of name, cohort and favRacer
     //check that name is no longer than 20 char
     //check that cohort and favRacer are IDs and that they exist in their tables
 
-    getCohort(function (err, cohorts) {
+     getCohort(function (err, cohorts) {
         getFavRacer(function (err, favRacers) {
 
             let validUserData = true
 
             let keys = Object.keys(userData);
 
-
             if (!(keys[0] == "name" && keys[1] == "cohort" && keys[2] == "favRacer")) {
                 validUserData = false
             }
 
-            if (userData.name.length < 0 && userData.name.length > 20) {
+            if (userData.name.length < 0 || userData.name.length > 20) {
                 validUserData = false
             }
 
@@ -45,9 +43,7 @@ async function addUserValidation(userData) {
                 validUserData = false
             }
 
-            console.log(validUserData)
-
-            return validUserData
+            cb(validUserData)
         })
     })
 }
