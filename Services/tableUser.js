@@ -1,5 +1,10 @@
 let connection = require('./dbMarioMania')
 
+/**
+ * adds user into db
+ * @param userData
+ * @param res
+ */
 function addUser(userData, res) {
     connection.query(
         'INSERT INTO `user` (`name`, `cohort`, `favRacer`) VALUES (?, ?, ?)',

@@ -1,5 +1,11 @@
 let connection = require('./dbMarioMania')
 
+/**
+ *gets cohort ids so that we can compare them to the user inputted ones
+ *
+ * @param callback
+ * @returns {Promise<void>}
+ */
 function getCohort(callback) {
     connection.query(
         'SELECT `id` FROM `cohort`',
