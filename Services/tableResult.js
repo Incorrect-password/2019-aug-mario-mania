@@ -12,11 +12,12 @@ function addResult(trackid, userid, position) {
         'INSERT INTO `result` (`trackid`, `userid`, `position`) VALUES (?, ?, ?)',
         [trackid, userid, position],
         function (err, result) {
-            if (err) throw err
-            console.log("results added for user " + userid)
-        });
+            if (err) {
+                res.send('Unable to reach DB')
+            }else {
+                console.log("Added Userid " + userid)
+            }
+        })
 }
 
 module.exports = addResult
-
-

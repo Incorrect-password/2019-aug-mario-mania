@@ -40,5 +40,3 @@ function getUserids(callback, res) {
 
 module.exports.addUser = addUser
 module.exports.getUserids = getUserids
-
-
