@@ -11,7 +11,7 @@ function getTrackids(callback, res) {
         'SELECT `id` FROM `result`',
         function (err, trackids) {
             if(err) {
-                res.send('Cannot validate Track')
+                res.send('Cannot connect to db')
             }else {
                 callback(err,trackids)
             }

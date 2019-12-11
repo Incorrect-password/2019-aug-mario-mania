@@ -48,7 +48,7 @@ function addRaceResultValidation(userData, cb) {
             }
 
             positions.forEach(function(position) {
-                if (position > 12 || position < 0) {
+                if (position > 12 || position < 1) {
                     validUserData = false
                 }
             })

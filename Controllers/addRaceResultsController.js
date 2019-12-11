@@ -9,7 +9,6 @@ const addRaceResultValidation = require('../Validation/addRaceResultValidation')
  */
 function addRaceResultController(userData,res) {
     addRaceResultValidation(userData, function(validUserData) {
-        // console.log(validUserData)
         if(validUserData) {
             let trackid = userData.track
             userData.result.forEach(function (value) {

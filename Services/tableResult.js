@@ -14,8 +14,6 @@ function addResult(trackid, userid, position) {
         function (err, result) {
             if (err) {
                 res.send('Unable to reach DB')
-            }else {
-                console.log("Added Userid " + userid)
             }
         })
 }
