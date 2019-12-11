@@ -42,5 +42,6 @@ function calculateUserModePosition(raceResults) {
     console.log(newRaceResults)
 }
 
+
 module.exports.addResult = addResult
 module.exports.getRaceResultsByTrack = getRaceResultsByTrack
