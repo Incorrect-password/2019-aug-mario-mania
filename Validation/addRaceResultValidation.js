@@ -1,5 +1,5 @@
-let getTrackids = require('../Services/tableResult')
-let getUserids = require('../Services/tableResult')
+let getTrackids = require('../Services/tableTrack')
+let getUserids = require('../Services/tableUser').getUserids
 
 /**
  * checks the userData matches criteria and that the ids given exist in db
@@ -10,56 +10,52 @@ let getUserids = require('../Services/tableResult')
 function addRaceResultValidation(userData, cb) {
     getTrackids(function (err, trackid) {
         getUserids(function (err, userid) {
-
             let validUserData = true
-
             let keys = Object.keys(userData);
-
-            if (!(keys[0] == "track" && keys[1] == "result" && keys[1][0] == "user" && keys[1][1] == "position")) {
+            console.log(validUserData)
+            if (keys[0] != "track" || keys[1] != "result") {
                 validUserData = false
+                return cb(validUserData)
             }
-
+            console.log(userData.result)
             let trackCheck = trackid.find(({id}) => id === userData.track)
 
             if (trackCheck === undefined) {
                 validUserData = false
             }
+            console.log(validUserData)
+
             let positions = []
-            userData.result.forEach(function(value) {
-                let userCheck = user.id.find(({id}) => id === value.user)
-                if (userCheck === undefined) {
+            userData.result.forEach(function(value, key) {
+                if (key == 'user') {
+                    let userCheck = userid.find(({id}) => id === value.user)
+                    if (userCheck === undefined) {
+                        validUserData = false
+                    }
+                    positions.push(value.position)
+                }else {
                     validUserData = false
+                    return cb(validUserData)
                 }
-                positions.push(value.position)
             })
 
-            if (positions[0] === )
-                //check value of positions do not match
+            let uniquePositions = [...new Set(positions)]
+
+            if(positions.length != uniquePositions.length) {
+                validUserData = false
+            }
+
+            positions.forEach(function(position) {
+                if (position > 12 || position < 0) {
+                    validUserData = false
+                }
             })
-            
-//             if (typeof (userData.cohort) !== "number") {
-//                 validUserData = false
-//             }
-//
-//             let cohortCheck = cohorts.find(({id}) => id === userData.cohort)
-//
-//             if (cohortCheck === undefined) {
-//                 validUserData = false
-//             }
-//
-//             let favRacerCheck = favRacers.find(({id}) => id === userData.favRacer)
-//
-//             if (favRacerCheck === undefined) {
-//                 validUserData = false
-//             }
-//
-//             if (typeof (userData.favRacer) !== "number") {
-//                 validUserData = false
-//             }
-//
+            console.log(validUserData)
+
             cb(validUserData)
         })
     })
 }
+
 
 module.exports = addRaceResultValidation
