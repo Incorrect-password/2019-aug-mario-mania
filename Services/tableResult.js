@@ -40,7 +40,7 @@ function calculateUserModePosition(raceResults) {
     }
 
     newRaceResults.forEach(user => {
-        var mode = user.allPosition
+        let mode = user.allPosition
         user.modeAggregator = {}
         user.modePosition = 0
         if (mode.length > 2){
