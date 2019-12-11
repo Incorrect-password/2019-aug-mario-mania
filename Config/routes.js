@@ -13,9 +13,13 @@ const routes = (app) => {
         res.send('created user!')
     })
 
-    app.post('/results', jsonParser, function (req, res) {
+    app.post('/results', jsonParser, function(req, res) {
        addRaceResultsController(req.body, res)
         res.send('results added')
+    })
+
+    app.get('/userResults/:userid', jsonParser, function(req, res) {
+        getUserResults(req.body, res)
     })
 }
 
