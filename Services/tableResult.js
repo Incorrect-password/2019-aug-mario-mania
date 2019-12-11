@@ -16,8 +16,8 @@ function getRaceResultsByTrack(trackid, callback) {
         [trackid],
         function (err, raceResults) {
             if (err) throw err
-            calculateUserModePosition(raceResults)
-            callback(raceResults)
+            let userMode = calculateUserModePosition(raceResults)
+            callback(userMode)
         })
 }
 
@@ -36,10 +36,48 @@ function calculateUserModePosition(raceResults) {
     let newRaceResults = []
 
     for (let key in newObj) {
-        newRaceResults.push({"userid": key, "modePosition": newObj[key]})
+        newRaceResults.push({"userid": key, "allPosition": newObj[key]})
     }
 
-    console.log(newRaceResults)
+    newRaceResults.forEach(user => {
+        var mode = user.allPosition
+        user.modeAggregator = {}
+        user.modePosition = 0
+        if (mode.length > 2){
+            mode.forEach(number => {
+                user.modeAggregator[number] = []
+            })
+            mode.forEach(number => {
+                user.modeAggregator[number].push(number)
+            })
+            let longestArray = {}
+            for (let key in user.modeAggregator){
+                longestArray[key] = user.modeAggregator[key].length
+            }
+            var sortable = [];
+            for (let key in longestArray){
+                sortable.push([key, longestArray[key]])
+            }
+            sortable.sort(function(a, b) {
+                return a[1] - b[1];
+            });
+            sortable.reverse()
+            user.modePosition = sortable[0][1]
+        } else {
+            user.modeAggregator = []
+            user.modePosition = 0
+            mode.forEach(number => {
+                user.modeAggregator.push(number)
+            })
+            user.modeAggregator.sort
+            user.modePosition = user.modeAggregator[0]
+        }
+    });
+    newRaceResults.forEach(user => {
+        delete user.allPosition
+        delete user.modeAggregator
+    })
+    return newRaceResults
 }
 
 
