@@ -12,24 +12,10 @@ function addResult(trackid, userid, position) {
         'INSERT INTO `result` (`trackid`, `userid`, `position`) VALUES (?, ?, ?)',
         [trackid, userid, position],
         function (err, result) {
-            if (err) throw err
-            console.log("results added for user " + userid)
-        });
-}
-
-function getTrackids(callback, res) {
-    connection.query(
-        'SELECT `id` FROM `result`',
-        function (err, trackids) {
-            if(err) {
-                res.send('Cannot validate Track')
-            }else {
-                callback(err,trackids)
+            if (err) {
+                res.send('Unable to reach DB')
             }
-        }
-    )
+        })
 }
 
-module.exports = addResult, getTrackids
-
-
+module.exports = addResult

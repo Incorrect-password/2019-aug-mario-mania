@@ -18,4 +18,25 @@ function addUser(userData, res) {
         })
 }
 
-module.exports = addUser
+/**
+ * gets the ids of all the users recorded in db
+ *
+ * @param callback
+ * @param res
+ */
+function getUserids(callback, res) {
+    connection.query(
+        'SELECT `id` FROM `user`',
+        function (err, userids) {
+            if(err) {
+                res.send('Cannot validate User')
+            }else {
+                callback(err,userids)
+            }
+        }
+    )
+}
+
+
+module.exports.addUser = addUser
+module.exports.getUserids = getUserids
