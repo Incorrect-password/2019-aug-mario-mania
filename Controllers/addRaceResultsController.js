@@ -8,9 +8,8 @@ const addRaceResultValidation = require('../Validation/addRaceResultValidation')
  * @param userData containing results from race
  */
 function addRaceResultController(userData) {
-    console.log('cont')
     addRaceResultValidation(userData, function(validUserData) {
-        console.log(validUserData)
+        // console.log(validUserData)
         if(validUserData) {
             let trackid = userData.track
             userData.result.forEach(function (value) {

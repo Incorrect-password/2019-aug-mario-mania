@@ -26,7 +26,7 @@ function addUser(userData, res) {
  */
 function getUserids(callback, res) {
     connection.query(
-        'SELECT `id` FROM `result`',
+        'SELECT `id` FROM `user`',
         function (err, userids) {
             if(err) {
                 res.send('Cannot validate User')

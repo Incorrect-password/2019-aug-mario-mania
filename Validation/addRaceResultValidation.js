@@ -12,28 +12,30 @@ function addRaceResultValidation(userData, cb) {
         getUserids(function (err, userid) {
             let validUserData = true
             let keys = Object.keys(userData);
-            console.log(validUserData)
             if (keys[0] != "track" || keys[1] != "result") {
                 validUserData = false
                 return cb(validUserData)
             }
-            console.log(userData.result)
+
             let trackCheck = trackid.find(({id}) => id === userData.track)
 
             if (trackCheck === undefined) {
                 validUserData = false
             }
-            console.log(validUserData)
 
             let positions = []
-            userData.result.forEach(function(value, key) {
-                if (key == 'user') {
+
+            userData.result.forEach(function(value) {
+
+                valueKeys = Object.keys(value)
+
+                if (valueKeys[0] == 'user' && valueKeys[1] == 'position') {
                     let userCheck = userid.find(({id}) => id === value.user)
                     if (userCheck === undefined) {
                         validUserData = false
                     }
                     positions.push(value.position)
-                }else {
+                }else{
                     validUserData = false
                     return cb(validUserData)
                 }
@@ -50,7 +52,6 @@ function addRaceResultValidation(userData, cb) {
                     validUserData = false
                 }
             })
-            console.log(validUserData)
 
             cb(validUserData)
         })
