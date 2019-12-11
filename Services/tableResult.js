@@ -7,7 +7,7 @@ function addResult(trackid, userid, position) {
         function (err) {
             if (err) throw err
             console.log("results added for user " + userid)
-        });
+        })
 }
 
 function getRaceResultsByTrack(trackid, callback) {
@@ -54,13 +54,13 @@ function calculateUserModePosition(raceResults) {
             for (let key in user.modeAggregator){
                 longestArray[key] = user.modeAggregator[key].length
             }
-            var sortable = [];
+            let sortable = []
             for (let key in longestArray){
                 sortable.push([key, longestArray[key]])
             }
             sortable.sort(function(a, b) {
-                return a[1] - b[1];
-            });
+                return a[1] - b[1]
+            })
             sortable.reverse()
             user.modePosition = sortable[0][1]
         } else {
@@ -72,14 +72,13 @@ function calculateUserModePosition(raceResults) {
             user.modeAggregator.sort
             user.modePosition = user.modeAggregator[0]
         }
-    });
+    })
     newRaceResults.forEach(user => {
         delete user.allPosition
         delete user.modeAggregator
     })
     return newRaceResults
 }
-
 
 module.exports.addResult = addResult
 module.exports.getRaceResultsByTrack = getRaceResultsByTrack
