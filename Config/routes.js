@@ -1,22 +1,24 @@
 const bodyParser = require('body-parser')
-
-var jsonParser = bodyParser.json()
-
+let jsonParser = bodyParser.json()
 const addUserController = require('../Controllers/addUserController')
 const addRaceResultsController = require('../Controllers/addRaceResultsController')
+const getTrackRankingsController = require('../Controllers/getTrackRankingsController')
+
 
 const routes = (app) => {
 
     app.post('/user', jsonParser, function(req, res) {
-
-        addUserController(req.body)
-        res.send('created user!')
+        addUserController(req.body, res)
     })
 
     app.post('/results', jsonParser, function (req, res) {
-       addRaceResultsController(req.body, res)
-        res.send('results added')
+        addRaceResultsController(req.body)
+        res.send('added results!')
+    })
+
+    app.get('/trackrankings/:trackid', function (req, res) {
+        getTrackRankingsController(req.params.trackid, res)
     })
 }
 
-module.exports = routes
+module.exports = routes;
