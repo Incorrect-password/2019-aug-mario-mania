@@ -40,12 +40,3 @@ GET
     use /trackrankings/:id
     where id is the trackid
     
-    
- /userResults
-
-GET
-
-    Get the user rankings for the track requested
-    use /userResults/:id
-    where id is the userid   
-
