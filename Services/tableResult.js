@@ -7,16 +7,18 @@ let connection = require('./dbMarioMania')
  * @param userid  id of the user who raced
  * @param position the position that user came
  */
-function addResult(trackid, userid, position) {
+function addResult(trackid, userid, position, res) {
     connection.query(
         'INSERT INTO `result` (`trackid`, `userid`, `position`) VALUES (?, ?, ?)',
         [trackid, userid, position],
         function (err) {
-            if (err) throw err
-            console.log("results added for user " + userid)
+            if (err) {
+                res.send({"success": false, "data": ['unexpected error']})
+            } else {
+                res.send({"success": true, "data": ['result added!']})
+            }
         })
 }
-
 
 /**
  * gets the results of each race by track
@@ -30,9 +32,12 @@ function getRaceResultsByTrack(trackid, callback) {
     'SELECT `userid`, `position` FROM `result` WHERE `trackid` = ? ORDER BY `userid`, `position`',
         [trackid],
         function (err, raceResults) {
-            if (err) throw err
             let userMode = calculateUserModePosition(raceResults)
-            callback(userMode)
+            if (err) {
+                res.send({"success": false, "data": ['unexpected error']})
+            } else {
+                res.send({"success": true, "data": userMode})
+            }
         })
 }
 

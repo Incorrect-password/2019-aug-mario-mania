@@ -1,4 +1,4 @@
-const addUser = require('../Services/tableUser')
+const addUser = require('../Services/tableUser').addUser
 
 const addUserValidation = require('../Validation/addUserValidation')
 

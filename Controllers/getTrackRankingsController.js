@@ -1,7 +1,6 @@
 const getRaceResultsByTrack = require('../Services/tableResult').getRaceResultsByTrack
 const getTrackRankingsValidation = require('../Validation/getTrackRankingsValidation').getTrackRankingsValidation
 
-
 /**
  * validates track id then uses it to get the race results by track
  *
