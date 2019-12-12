@@ -10,8 +10,7 @@ const getTrackRankingsValidation = require('../Validation/getTrackRankingsValida
 function getTrackRankingsController(trackid, res) {
     getTrackRankingsValidation(trackid, res, function(validUserData) {
         if(validUserData) {
-            getRaceResultsByTrack(trackid, function (raceResults) {
-                console.log(raceResults)
+            getRaceResultsByTrack(trackid, res, function (raceResults) {
                 if (raceResults.length !== 0) {
                     res.send({"success": true, "data": raceResults})
                 }else {

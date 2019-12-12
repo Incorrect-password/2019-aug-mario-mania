@@ -27,7 +27,7 @@ function addResult(trackid, userid, position, res) {
  * @param  callback 
  */
 
-function getRaceResultsByTrack(trackid, callback) {
+function getRaceResultsByTrack(trackid, res, callback) {
     connection.query(
     'SELECT `userid`, `position` FROM `result` WHERE `trackid` = ? ORDER BY `userid`, `position`',
         [trackid],
