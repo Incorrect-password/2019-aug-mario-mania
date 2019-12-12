@@ -29,7 +29,7 @@ function addResult(trackid, userid, position, res) {
 
 function getRaceResultsByTrack(trackid, res, callback) {
     connection.query(
-    'SELECT `userid`, `position` FROM `result` WHERE `trackid` = ? ORDER BY `userid`, `position`',
+    'SELECT `result`.`userid`, `result`.`position`, `user`.`name` FROM `result` LEFT JOIN `user` ON `result`.`userid` = `user`.`id` WHERE `trackid` = ? ORDER BY `userid`, `position`',
         [trackid],
         function (err, raceResults) {
             let userMode = calculateUserModePosition(raceResults)
@@ -53,17 +53,17 @@ function calculateUserModePosition(raceResults) {
     let newObj = {}
 
     raceResults.forEach(function (raceResult) {
-        newObj[raceResult.userid] = []
+        newObj[raceResult.name] = []
     })
 
     raceResults.forEach(function (raceResult) {
-        newObj[raceResult.userid].push(raceResult.position)
+        newObj[raceResult.name].push(raceResult.position)
     })
 
     let newRaceResults = []
 
     for (let key in newObj) {
-        newRaceResults.push({"userid": key, "allPosition": newObj[key]})
+        newRaceResults.push({"name": key, "allPosition": newObj[key]})
     }
 
     newRaceResults.forEach(user => {
@@ -106,7 +106,7 @@ function calculateUserModePosition(raceResults) {
     })
     let sortedByModeArray = []
             for (let key in newRaceResults){
-                sortedByModeArray.push([newRaceResults[key].userid, newRaceResults[key].modePosition])
+                sortedByModeArray.push([newRaceResults[key].name, newRaceResults[key].modePosition])
             }
             sortedByModeArray.sort(function(a, b) {
                 return a[1] - b[1]
@@ -114,10 +114,12 @@ function calculateUserModePosition(raceResults) {
     let usersByModeObject = []
     sortedByModeArray.forEach(user => {
         obj = {}
-        obj.userid = parseInt(user[0])
+        obj.name = (user[0])
         obj.modePosition = user[1]
         usersByModeObject.push(obj)
     })
+    console.log(usersByModeObject)
+
     return usersByModeObject
 }
 
