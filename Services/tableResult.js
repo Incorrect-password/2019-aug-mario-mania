@@ -14,8 +14,6 @@ function addResult(trackid, userid, position, res) {
         function (err) {
             if (err) {
                 res.send({"success": false, "data": ['unexpected error']})
-            } else {
-                res.send({"success": true, "data": ['result added!']})
             }
         })
 }

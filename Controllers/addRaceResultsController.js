@@ -8,13 +8,14 @@ const addRaceResultValidation = require('../Validation/addRaceResultValidation')
  * @param userData containing results from race
  */
 function addRaceResultController(userData,res) {
-    addRaceResultValidation(userData, function(validUserData) {
+    addRaceResultValidation(userData, res, function(validUserData) {
         if(validUserData) {
             let trackid = userData.track
             userData.result.forEach(function (value) {
                 addResult(trackid, value.user, value.position, res)
             })
-        }else{
+            res.send({"success": true, "data": ['result added!']})
+        } else {
             res.send({"success": false, data: ['Invalid request']})
         }
     }
