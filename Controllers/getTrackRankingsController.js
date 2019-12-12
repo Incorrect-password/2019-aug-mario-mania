@@ -1,5 +1,5 @@
 const getRaceResultsByTrack = require('../Services/tableResult').getRaceResultsByTrack
-const getgetTrackRankingValidation = require('../Validation/getTrackRankingsValidation')
+const getTrackRankingsValidation = require('../Validation/getTrackRankingsValidation').getTrackRankingsValidation
 
 
 /**
@@ -9,11 +9,18 @@ const getgetTrackRankingValidation = require('../Validation/getTrackRankingsVali
  * @param res
  */
 function getTrackRankingsController(trackid, res) {
-    getgetTrackRankingValidation(trackid, res, function(validUserData) {
+    getTrackRankingsValidation(trackid, res, function(validUserData) {
         if(validUserData) {
             getRaceResultsByTrack(trackid, function (raceResults) {
-                res.send({"success": true, "data": raceResults})
+                console.log(raceResults)
+                if (raceResults.length !== 0) {
+                    res.send({"success": true, "data": raceResults})
+                }else {
+                    res.send({"success": true, "data": ['There is no data for this track, get racing!!']})
+                }
             })
+        }else{
+            res.send({"success": false, "data": 'Unable to validate request'})
         }
     })
 }

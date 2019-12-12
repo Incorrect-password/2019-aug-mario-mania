@@ -8,11 +8,11 @@ let getTrackids = require('../Services/tableTrack')
  * @param res
  * @param callback
  */
-function getTrackRankingValidation(trackid,res, callback) {
+function getTrackRankingsValidation(userdata,res, callback) {
         getTrackids(function (err, trackid) {
             let validUserData = true
 
-            let trackCheck = trackid.find(({id}) => id === trackid)
+            let trackCheck = trackid.find(({id}) => id === parseInt(userdata))
 
             if (trackCheck === undefined) {
                 validUserData = false
@@ -21,4 +21,4 @@ function getTrackRankingValidation(trackid,res, callback) {
     })
 }
 
-module.exports.getTrackRankingValidation = getTrackRankingValidation
+module.exports.getTrackRankingsValidation = getTrackRankingsValidation

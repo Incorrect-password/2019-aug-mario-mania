@@ -8,7 +8,7 @@ let connection = require('./dbMarioMania')
  */
 function getTrackids(callback, res) {
     connection.query(
-        'SELECT `id` FROM `result`',
+        'SELECT `id` FROM `track`',
         function (err, trackids) {
             if(err) {
                 res.send({"success": false, data: ['Cannot connect to db']})
