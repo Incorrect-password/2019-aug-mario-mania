@@ -13,7 +13,7 @@ function getTrack(req, res) {
             if(err) {
                 res.send({"success": false, data: ['Cannot connect to db']})
             }else {
-                res.send(trackids)
+                res.json({data: trackids})
             }
         }
     )
