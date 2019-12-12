@@ -1,4 +1,4 @@
-const addResult = require('../Services/tableResult')
+const addResult = require('../Services/tableResult').addResult
 
 const addRaceResultValidation = require('../Validation/addRaceResultValidation')
 
