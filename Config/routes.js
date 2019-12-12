@@ -3,7 +3,7 @@ let jsonParser = bodyParser.json()
 const addUserController = require('../Controllers/addUserController')
 const addRaceResultsController = require('../Controllers/addRaceResultsController')
 const getTrackRankingsController = require('../Controllers/getTrackRankingsController')
-
+const getUserResultsController = require('../Controllers/getUserResultsController')
 
 const routes = (app) => {
 
@@ -21,7 +21,7 @@ const routes = (app) => {
     })
 
     app.get('/userResults/:userid', jsonParser, function(req, res) {
-        getUserResults(req.body, res)
+        getUserResultsController(req.body, res)
     })
 }
 

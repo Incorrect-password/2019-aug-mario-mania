@@ -7,7 +7,7 @@ let getUserids = require('../Services/tableUser').getUserids
  * @param userData
  * @param cb returns result
  */
-function addRaceResultValidation(userData, cb) {
+function addRaceResultValidation(userData,newestRaceid, cb) {
     getTrackids(function (err, trackid) {
         getUserids(function (err, userid) {
             let validUserData = true
