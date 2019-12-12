@@ -38,7 +38,6 @@ function getRaceResultsByTrack(trackid, callback) {
             } else {
                 res.send({"success": true, "data": userMode})
             }
-            // callback(userMode)
         })
 }
 
