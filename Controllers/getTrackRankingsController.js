@@ -1,9 +1,13 @@
 const getRaceResultsByTrack = require('../Services/tableResult').getRaceResultsByTrack
+const getgetTrackRankingValidation = require('../Validation/getTrackRankingsValidation')
 
 function getTrackRankingsController(trackid, res) {
-
-    getRaceResultsByTrack(trackid, function(raceResults) {
-        res.send({"success": true, "data": raceResults})
+    getgetTrackRankingValidation(trackid, res, function(validUserData) {
+        if(validUserData) {
+            getRaceResultsByTrack(trackid, function (raceResults) {
+                res.send({"success": true, "data": raceResults})
+            })
+        }
     })
 }
 
