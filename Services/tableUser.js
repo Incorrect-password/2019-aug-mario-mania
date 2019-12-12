@@ -29,7 +29,7 @@ function getUserids(callback, res) {
         'SELECT `id` FROM `user`',
         function (err, userids) {
             if(err) {
-                res.send('Cannot validate User')
+                res.send({"success": false, data: ['Cannot validate User']})
             }else {
                 callback(err,userids)
             }

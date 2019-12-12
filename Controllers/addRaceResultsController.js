@@ -1,5 +1,6 @@
-const addResult = require('../Services/tableResult')
-
+const addResult = require('../Services/tableResult').addResult
+const addRace = require('../Services/tableRace').addRace
+const addRaceIdToUserData = require('../Services/tableRace').addRaceIdToUserData
 const addRaceResultValidation = require('../Validation/addRaceResultValidation')
 
 /**
@@ -15,8 +16,7 @@ function addRaceResultController(userData,res) {
                 addResult(trackid, value.user, value.position, res)
             })
         }else{
-            console.log("Failed")
-            res.send('Invalid request')
+            res.send({"success": false, data: ['Invalid request']})
         }
     }
 )}
