@@ -17,6 +17,14 @@ function addResult(trackid, userid, position) {
         })
 }
 
+
+/**
+ * gets the results of each race by track
+ * 
+ * @param  trackid 
+ * @param  callback 
+ */
+
 function getRaceResultsByTrack(trackid, callback) {
     connection.query(
     'SELECT `userid`, `position` FROM `result` WHERE `trackid` = ? ORDER BY `userid`, `position`',
@@ -27,6 +35,13 @@ function getRaceResultsByTrack(trackid, callback) {
             callback(userMode)
         })
 }
+
+/**
+ *  Calculates each user's mode position on each track, and returns an array
+ *  ordered by each user's mode position. 
+ * 
+ * @param {*} raceResults 
+ */
 
 function calculateUserModePosition(raceResults) {
 
@@ -93,8 +108,6 @@ function calculateUserModePosition(raceResults) {
             })
     let usersByModeObject = []
     sortedByModeArray.forEach(user => {
-        // useridInt = parseInt(user[1])
-        // usersByModeObject[useridInt] = {}
         obj = {}
         obj.userid = parseInt(user[0])
         obj.modePosition = user[1]
