@@ -14,7 +14,7 @@ function addUserController(userData, res) {
         if (validUserData) {
             addUser(userData, res)
         } else {
-            res.send('failed to add user')
+            res.send({"success": false, "data": ['failed to add user']})
         }
     })
 }
