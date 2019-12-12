@@ -15,8 +15,7 @@ function addRaceResultController(userData,res) {
                 addResult(trackid, value.user, value.position, res)
             })
         }else{
-            console.log("Failed")
-            res.send('Invalid request')
+            res.send({"success": false, data: ['Invalid request']})
         }
     }
 )}
