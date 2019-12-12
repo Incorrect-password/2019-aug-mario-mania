@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 let jsonParser = bodyParser.json()
+const getTrack = require('../Services/tableTrack')
 const addUserController = require('../Controllers/addUserController')
 const addRaceResultsController = require('../Controllers/addRaceResultsController')
 const getTrackRankingsController = require('../Controllers/getTrackRankingsController')
@@ -22,6 +23,9 @@ const routes = (app) => {
 
     app.get('/userResults/:userid', jsonParser, function(req, res) {
         getUserResults(req.body, res)
+    })
+    app.get('/tracks', jsonParser, function(req, res) {
+        getTrack(req.params, res)
     })
 }
 

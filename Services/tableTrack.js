@@ -6,17 +6,17 @@ let connection = require('./dbMarioMania')
  * @param callback
  * @param res
  */
-function getTrackids(callback, res) {
+function getTrack(req, res) {
     connection.query(
-        'SELECT `id` FROM `result`',
+        'SELECT `id`, `name` FROM `track`',
         function (err, trackids) {
             if(err) {
                 res.send({"success": false, data: ['Cannot connect to db']})
             }else {
-                callback(err,trackids)
+                res.send(trackids)
             }
         }
     )
 }
 
-module.exports = getTrackids
+module.exports = getTrack
