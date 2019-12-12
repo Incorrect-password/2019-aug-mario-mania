@@ -1,12 +1,17 @@
-const getRacesTakenPartIn = require('../Services/tableRace').addResult
+const getRacesTracksResults = require('../Services/tableRace').addResult
 
-
-function getUserResultsController(userData, res) {
+/**
+ * retrieves tracks and results and the combined mode based on user id
+ *
+ * @param userid
+ * @param res
+ */
+function getUserResultsController(userid, res) {
     //specific user
-    //return races taken part in
-     getRacesTakenPartIn()
     //return tracks and results
     //mode position across all tracks
+    //return races taken part in
+    getRacesTracksResults(userid, res)
 
 }
 

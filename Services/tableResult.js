@@ -114,5 +114,20 @@ function calculateUserModePosition(raceResults) {
     return usersByModeObject
 }
 
+function getRacesTakenPartIn(userid, res){
+    connection.query(
+        'SELECT `userid`,`trackid`,`position`,`raceid` FROM `result` WHERE `userid` = ? LEFT JOIN `race` ON `result`.`raceid` = `race`.`race` LEFT JOIN `track` ON `result`.`trackid` = `track`.`name` LEFT JOIN `user` ON `result`.userid = `user`.`name`',
+        [userid],
+        function (err, userResults) {
+            if (err) {
+                res.send('{"success": false, "data": "database connection failed"}')
+            }else {
+                callback(err, userResults)
+            }
+        })
+}
+
 module.exports.addResult = addResult
 module.exports.getRaceResultsByTrack = getRaceResultsByTrack
+module.exports.getRacesTakenPartIn = getRacesTakenPartIn
+

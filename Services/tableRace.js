@@ -17,7 +17,7 @@ function addRace(res) {
 }
 
 /**
- * adds
+ * retrieves the race id
  *
  * @param callback
  * @param res
