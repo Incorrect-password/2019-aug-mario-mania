@@ -7,10 +7,10 @@ let connection = require('./dbMarioMania')
  * @param userid  id of the user who raced
  * @param position the position that user came
  */
-function addResult(trackid, userid, position) {
+function addResult(trackid, userid, position, raceid) {
     connection.query(
-        'INSERT INTO `result` (`trackid`, `userid`, `position`) VALUES (?, ?, ?)',
-        [trackid, userid, position],
+        'INSERT INTO `result` (`trackid`, `userid`, `position`,`raceid`) VALUES (?, ?, ?, ?)',
+        [trackid, userid, position, raceid],
         function (err) {
             if (err) throw err
             console.log("results added for user " + userid)

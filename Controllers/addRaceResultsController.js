@@ -1,5 +1,6 @@
-const addResult = require('../Services/tableResult')
-
+const addResult = require('../Services/tableResult').addResult
+const addRace = require('../Services/tableRace').addRace
+const addRaceIdToUserData = require('../Services/tableRace').addRaceIdToUserData
 const addRaceResultValidation = require('../Validation/addRaceResultValidation')
 
 /**
@@ -8,17 +9,22 @@ const addRaceResultValidation = require('../Validation/addRaceResultValidation')
  * @param userData containing results from race
  */
 function addRaceResultController(userData,res) {
-    addRaceResultValidation(userData, function(validUserData) {
-        if(validUserData) {
-            let trackid = userData.track
-            userData.result.forEach(function (value) {
-                addResult(trackid, value.user, value.position, res)
-            })
-        }else{
-            console.log("Failed")
-            res.send('Invalid request')
-        }
-    }
-)}
+    addRace(res)
+    addRaceIdToUserData(function (err,raceid){
+        let newestRaceid = raceid[raceid.length-1]
+
+        addRaceResultValidation(userData, newestRaceid, function(validUserData) {
+            if(validUserData) {
+                let trackid = userData.track
+                userData.result.forEach(function (value) {
+                    addResult(trackid, value.user, value.position, newestRaceid.id, res)
+                })
+            }else{
+                console.log("Failed")
+                res.send('Invalid request')
+            }
+        })
+    })
+}
 
 module.exports = addRaceResultController
