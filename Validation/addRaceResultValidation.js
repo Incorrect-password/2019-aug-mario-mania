@@ -24,6 +24,7 @@ function addRaceResultValidation(userData, res, cb) {
             }
 
             let positions = []
+            let users = []
 
             userData.result.forEach(function(value) {
 
@@ -35,6 +36,7 @@ function addRaceResultValidation(userData, res, cb) {
                         validUserData = false
                     }
                     positions.push(value.position)
+                    users.push(value.user)
                 }else{
                     validUserData = false
                     return cb(validUserData)
@@ -44,6 +46,12 @@ function addRaceResultValidation(userData, res, cb) {
             let uniquePositions = [...new Set(positions)]
 
             if(positions.length != uniquePositions.length) {
+                validUserData = false
+            }
+
+            let uniqueUsers = [...new Set(users)]
+
+            if(users.length != uniqueUsers.length) {
                 validUserData = false
             }
 
