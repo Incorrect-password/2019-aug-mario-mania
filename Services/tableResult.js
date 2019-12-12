@@ -17,6 +17,12 @@ function addResult(trackid, userid, position, raceid) {
         })
 }
 
+/**
+ * gets results for a specified track
+ *
+ * @param trackid the id corresponding to the desired track
+ * @param callback
+ */
 function getRaceResultsByTrack(trackid, callback) {
     connection.query(
     'SELECT `userid`, `position` FROM `result` WHERE `trackid` = ? ORDER BY `userid`, `position`',

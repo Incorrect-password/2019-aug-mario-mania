@@ -1,6 +1,6 @@
 const addResult = require('../Services/tableResult').addResult
 const addRace = require('../Services/tableRace').addRace
-const addRaceIdToUserData = require('../Services/tableRace').addRaceIdToUserData
+const getRaceid = require('../Services/tableRace').getRaceid
 const addRaceResultValidation = require('../Validation/addRaceResultValidation')
 
 /**
@@ -10,7 +10,7 @@ const addRaceResultValidation = require('../Validation/addRaceResultValidation')
  */
 function addRaceResultController(userData,res) {
     addRace(res)
-    addRaceIdToUserData(function (err,raceid){
+    getRaceid(function (err,raceid){
         let newestRaceid = raceid[raceid.length-1]
 
         addRaceResultValidation(userData, newestRaceid, function(validUserData) {

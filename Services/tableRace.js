@@ -1,6 +1,10 @@
 let connection = require('./dbMarioMania')
 
-
+/**
+ * creates a new race entry named after the timestamp
+ *
+ * @param res
+ */
 function addRace(res) {
     connection.query(
         'INSERT INTO `race` (`race`) VALUES (?)',
@@ -12,7 +16,13 @@ function addRace(res) {
         })
 }
 
-function addRaceIdToUserData(callback,res){
+/**
+ * adds
+ *
+ * @param callback
+ * @param res
+ */
+function getRaceid(callback,res){
     connection.query(
         'SELECT `id` FROM `race`',
         function (err, raceid) {
@@ -25,4 +35,4 @@ function addRaceIdToUserData(callback,res){
 }
 
 module.exports.addRace = addRace
-module.exports.addRaceIdToUserData = addRaceIdToUserData
+module.exports.getRaceid = getRaceid
