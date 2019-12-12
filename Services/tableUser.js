@@ -11,7 +11,7 @@ function addUser(userData, res) {
         [userData.name, userData.cohort, userData.favRacer],
         function (err, result) {
             if (err) {
-                res.send({"success": false, "data": ['username taken']})
+                res.send({"success": false, "data": ['unexpected error']})
             } else {
                 res.send({"success": true, "data": ['user created!']})
             }
@@ -36,7 +36,6 @@ function getUserids(callback, res) {
         }
     )
 }
-
 
 module.exports.addUser = addUser
 module.exports.getUserids = getUserids
