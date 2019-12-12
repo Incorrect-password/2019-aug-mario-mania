@@ -29,7 +29,7 @@ function addResult(trackid, userid, position, res) {
 
 function getRaceResultsByTrack(trackid, res, callback) {
     connection.query(
-    'SELECT `userid`, `position`, `name` FROM `result` LEFT JOIN `user` ON `result`.`userid` = `user`.`id` WHERE `trackid` = ? ORDER BY `userid`, `position`',
+    'SELECT `result`.`userid`, `result`.`position`, `user`.`name` FROM `result` LEFT JOIN `user` ON `result`.`userid` = `user`.`id` WHERE `trackid` = ? ORDER BY `userid`, `position`',
         [trackid],
         function (err, raceResults) {
             let userMode = calculateUserModePosition(raceResults)
