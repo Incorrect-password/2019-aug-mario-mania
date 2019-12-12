@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: mario-mania
-# Generation Time: 2019-12-12 09:27:29 +0000
+# Generation Time: 2019-12-12 13:46:19 +0000
 # ************************************************************
 
 
@@ -80,6 +80,42 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table race
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `race`;
+
+CREATE TABLE `race` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `race` bigint(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `race` WRITE;
+/*!40000 ALTER TABLE `race` DISABLE KEYS */;
+
+INSERT INTO `race` (`id`, `race`)
+VALUES
+	(1,1576147500499),
+	(2,1576147500520),
+	(4,1576147500500),
+	(5,1576150261114),
+	(6,1576150286659),
+	(7,1576150349412),
+	(8,1576150457415),
+	(9,1576150608392),
+	(10,1576150632477),
+	(11,1576150700504),
+	(12,1576150717559),
+	(13,1576150783403),
+	(14,1576150853185),
+	(15,1576150889935),
+	(16,1576150978689);
+
+/*!40000 ALTER TABLE `race` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table result
 # ------------------------------------------------------------
 
@@ -90,40 +126,31 @@ CREATE TABLE `result` (
   `trackid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `position` int(2) NOT NULL,
+  `raceid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `result` WRITE;
 /*!40000 ALTER TABLE `result` DISABLE KEYS */;
 
-INSERT INTO `result` (`id`, `trackid`, `userid`, `position`)
+INSERT INTO `result` (`id`, `trackid`, `userid`, `position`, `raceid`)
 VALUES
-	(1,1,1,1),
-	(2,1,2,5),
-	(3,1,3,6),
-	(4,1,4,12),
-	(5,2,1,4),
-	(6,2,2,1),
-	(7,2,3,5),
-	(8,2,4,2),
-	(9,6,1,2),
-	(10,6,2,5),
-	(11,6,3,12),
-	(12,6,4,1),
-	(13,4,1,5),
-	(14,4,3,6),
-	(15,4,4,1),
-	(16,4,1,2),
-	(17,4,2,3),
-	(18,4,3,4),
-	(19,4,4,12),
-	(20,3,1,1),
-	(21,3,2,2),
-	(22,3,3,3),
-	(23,3,4,4),
-	(24,1,1,5),
-	(25,1,2,3),
-	(26,1,4,8);
+	(1,1,1,1,1),
+	(2,1,2,5,1),
+	(3,1,3,6,1),
+	(4,1,4,12,1),
+	(5,2,1,4,2),
+	(6,2,2,1,2),
+	(7,2,3,5,2),
+	(8,2,4,2,2),
+	(9,6,1,2,3),
+	(10,6,2,5,3),
+	(11,6,3,12,3),
+	(12,6,4,1,3),
+	(59,3,1,3,16),
+	(60,3,2,12,16),
+	(61,3,3,2,16),
+	(62,3,4,1,16);
 
 /*!40000 ALTER TABLE `result` ENABLE KEYS */;
 UNLOCK TABLES;
