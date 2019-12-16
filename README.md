@@ -4,7 +4,7 @@ Local setup
 
 Routes
 
-    for local development use localhost:3000/ as your ajax URL
+    for local development use localhost:3000/
 
 
 /user
